@@ -1,0 +1,13 @@
+{
+  "id": "x_ic_siveillance",
+  "name": "Siveillance Intrusion Integration",
+  "scope": "x_ic_siveillance",
+  "version": "1.0.0",
+  "vendor": "Siemens",
+  "logo": "siemens_logo.png",
+  "vendor_prefix": "x_ic_siveillance",
+  "sys_app_id": "x_ic_siveillance",
+  "short_description": "ServiceNow integration generated from siveillance-intrusion-integration.yaml",
+  "template": "standard",
+  "trackable": true
+}
