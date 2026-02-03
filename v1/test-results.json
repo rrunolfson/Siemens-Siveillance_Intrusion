@@ -1,0 +1,90 @@
+{
+  "suiteName": "ServiceNow Integration Validation",
+  "totalTests": 6,
+  "passed": 0,
+  "failed": 0,
+  "skipped": 6,
+  "results": [
+    {
+      "testName": "Table Existence Check",
+      "status": "skipped",
+      "message": "Table 'cmdb_ci_ot_ic_siveillance' not found - install package first",
+      "details": null,
+      "timestamp": "2026-02-03T13:01:51.787Z"
+    },
+    {
+      "testName": "System Properties Check",
+      "status": "skipped",
+      "message": "No properties configured yet - run post-install setup",
+      "details": null,
+      "timestamp": "2026-02-03T13:01:51.939Z"
+    },
+    {
+      "testName": "Update Set Validation",
+      "status": "skipped",
+      "message": "No update sets found - may be a new installation",
+      "details": null,
+      "timestamp": "2026-02-03T13:01:52.136Z"
+    },
+    {
+      "testName": "Table Fields Validation",
+      "status": "skipped",
+      "message": "No custom fields found (table may extend base table)",
+      "details": null,
+      "timestamp": "2026-02-03T13:01:53.039Z"
+    },
+    {
+      "testName": "ACL Validation",
+      "status": "skipped",
+      "message": "No ACL rules found (may use inherited or role-based security)",
+      "details": null,
+      "timestamp": "2026-02-03T13:01:53.300Z"
+    },
+    {
+      "testName": "Data Read/Write Test",
+      "status": "skipped",
+      "message": "Table does not exist - install package first",
+      "details": null,
+      "timestamp": "2026-02-03T13:01:53.300Z"
+    }
+  ],
+  "duration": 2169,
+  "config": {
+    "appName": "Siveillance_Intrusion",
+    "scope": "x_ic_siveillance",
+    "tableName": "cmdb_ci_ot_ic_siveillance",
+    "configVars": [
+      {
+        "key": "SN_INSTANCE",
+        "type": "string"
+      },
+      {
+        "key": "SN_API_KEY",
+        "type": "string"
+      },
+      {
+        "key": "SIVEILLANCE_API_KEY",
+        "type": "string"
+      },
+      {
+        "key": "SIVEILLANCE_PARTITION_ID",
+        "type": "string"
+      },
+      {
+        "key": "SYNC_INTERVAL_SECONDS",
+        "type": "integer"
+      },
+      {
+        "key": "ENABLE_INCIDENT_CORRELATION",
+        "type": "boolean"
+      }
+    ],
+    "requiredRoles": [
+      "admin",
+      "ot_admin"
+    ]
+  },
+  "instance": "lastmile.service-now.com",
+  "timestamp": "2026-02-03T13:01:53.303Z",
+  "correctiveActions": []
+}
