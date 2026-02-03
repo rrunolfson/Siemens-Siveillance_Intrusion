@@ -1,0 +1,401 @@
+<p style="margin:0; padding:0;">
+  <img src="assets/last-mile-logo.png" alt="Last Mile Inc." width="120" style="max-width:120px; height:auto; display:block; margin:0;" />
+</p>
+**LAST MILE INC.**
+
+# Siveillance Intrusion Integration
+
+Integration for Siemens Siveillance Intrusion detection systems.
+Enables discovery and management of intrusion system devices, zones, and configurations
+through the Siveillance Intrusion API. Supports real-time monitoring and automated
+incident correlation with ServiceNow security incidents.
+
+
+**Version:** 1.0.0
+**Scope:** x_ic_siveillance
+**Platform:** Siemens Siveillance
+**Type:** Security
+**Generated for:** Siemens
+
+---
+
+## Table of Contents
+
+1. [Application Details](#application-details)
+2. [Overview](#overview)
+3. [Installation](#installation)
+4. [Database Schema](#database-schema)
+5. [Configuration](#configuration)
+6. [File Manifest](#file-manifest)
+7. [Post-Installation Setup](#post-installation-setup)
+8. [Testing & Validation](#testing--validation)
+9. [Troubleshooting](#troubleshooting)
+10. [Support](#support)
+
+---
+
+## Application Details
+
+### Integration Information
+
+| Property | Value |
+|----------|-------|
+| **Integration Title** | Siveillance Intrusion Integration |
+| **Integration Author** | Last Mile Inc. |
+| **Version** | 1.0.0 |
+| **Scope** | x_ic_siveillance |
+| **Platform** | Siemens Siveillance |
+| **Type** | Security |
+| **Target System** | Siemens |
+
+### Modules
+
+This application provides the following application modules:
+
+- **Configuration**: Access integration settings and configuration
+- **Setup Wizard**: Guided configuration for first-time setup
+- **Siveillance Intrusion Integration CI**: Manage Integration for Siemens Siveillance Intrusion detection systems.
+Enables discovery and management of intrusion system devices, zones, and configurations
+through the Siveillance Intrusion API. Supports real-time monitoring and automated
+incident correlation with ServiceNow security incidents.
+
+
+### UI Pages
+
+Custom UI pages included:
+
+- **Guided Setup Page**: Interactive configuration wizard
+- **Configuration Portal**: Centralized settings management
+
+### Dependencies
+
+**ServiceNow Modules Required:**
+
+- **ITOM Configuration Item** (Core CMDB functionality)
+- **Service Management** (Base ServiceNow installation)
+
+**Note:** These modules must be activated before installing this integration.
+
+### Inbound Web Services
+
+REST endpoints to receive data from the source system:
+
+- **POST** `/api/x_ic_siveillance/import` - Bulk import records
+- **POST** `/api/x_ic_siveillance/sync` - Incremental sync updates
+- **GET** `/api/x_ic_siveillance/status` - Integration health check
+
+All endpoints require OAuth 2.0 authentication with appropriate roles.
+
+### Outbound Web Services
+
+External API calls made by this integration:
+
+- **Siemens Siveillance API**: Fetch real-time data from source system
+- **Authentication Service**: OAuth token management
+- **Webhook Callbacks**: Event notifications (if configured)
+
+### APIs
+
+**Scripted REST APIs:**
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/x_ic_siveillance/v1/records` | GET | Query integration records |
+| `/api/x_ic_siveillance/v1/records` | POST | Create new records |
+| `/api/x_ic_siveillance/v1/records/{sys_id}` | GET | Retrieve specific record |
+| `/api/x_ic_siveillance/v1/records/{sys_id}` | PUT | Update record |
+| `/api/x_ic_siveillance/v1/records/{sys_id}` | DELETE | Delete record |
+| `/api/x_ic_siveillance/v1/sync` | POST | Trigger manual sync |
+
+### Roles
+
+Custom roles created by this application:
+
+- **x_ic_siveillance.admin**: Full administrative access to integration
+- **x_ic_siveillance.user**: Read-only access to integration data
+- **x_ic_siveillance.api_user**: API access for external systems
+
+**Required Roles for Installation:**
+
+- admin
+- ot_admin (for ITOM integrations)
+
+### Tables
+
+Custom tables and extensions:
+
+| Table | Label | Extends | Purpose |
+|-------|-------|---------|---------|
+| `x_ic_siveillance_siveillance_intrusion_ci` | Siveillance Intrusion Integration CI | cmdb_ci_ot_field_device | Integration for Siemens Siveillance Intrusion detection systems.
+Enables discovery and management of intrusion system devices, zones, and configurations
+through the Siveillance Intrusion API. Supports real-time monitoring and automated
+incident correlation with ServiceNow security incidents.
+ |
+
+**Total Fields:** 17
+
+### Data
+
+**Sample Data Included:**
+
+This integration includes demonstration data for testing and validation:
+
+- **5 sample records** for immediate testing
+- **Complete field coverage** demonstrating all data types
+- **Relationship examples** showing parent/child associations
+
+Sample data is automatically created during the guided setup wizard and can be removed after validation.
+
+---
+
+## Overview
+
+This ServiceNow scoped application was generated by **InfinitiCode** and provides:
+
+- **Automated integration** with external systems
+- **ServiceNow XML** configuration definitions
+- **Configuration management** via sys_properties
+- **Guided setup wizard** for easy configuration
+- **Runtime helpers** for scheduling, retries, and rate limiting
+
+## Installation
+
+> **🎯 Quick Start:** This application has been pre-registered in your ServiceNow instance.
+
+**[Open in Studio](https://lastmile.service-now.com/$studio.do?sysparm_app=x_ic_siveillance)**
+
+### Import from Source Control
+
+After opening in Studio:
+1. Click: **File → Import from Source Control**
+2. Configure your Git repository URL, branch, and application path
+3. Click: **Import** to sync files
+4. Verify the application is active and configured
+
+---
+
+
+### Prerequisites
+
+- ServiceNow instance (San Diego or later recommended)
+- User with **admin** role or equivalent permissions
+
+### Installation Steps
+
+#### Option 1: ServiceNow Studio
+1. Navigate to **System Applications > Studio**
+2. Click **Import From Source Control** or **Import Application**
+3. Upload the application package (.zip file)
+4. Wait for the import to complete
+5. Review import logs for any warnings or errors
+
+#### Option 2: Update Set (if provided)
+1. Navigate to **System Update Sets > Retrieved Update Sets**
+2. Click **Import Update Set from XML**
+3. Upload the XML file
+4. Preview the update set
+5. Resolve any conflicts
+6. Commit the update set
+
+#### Option 3: ServiceNow CLI
+```bash
+now-cli app install --scope x_ic_siveillance
+```
+
+## Database Schema
+
+This application creates and modifies the following tables:
+
+### Siveillance Intrusion Integration CI (`x_ic_siveillance_siveillance_intrusion_ci`)
+
+Integration for Siemens Siveillance Intrusion detection systems.
+Enables discovery and management of intrusion system devices, zones, and configurations
+through the Siveillance Intrusion API. Supports real-time monitoring and automated
+incident correlation with ServiceNow security incidents.
+
+
+**Extends:** `cmdb_ci_ot_field_device`
+
+#### Fields
+
+| Field Name | Type | Label | Mandatory | Description |
+|------------|------|-------|-----------|-------------|
+| `u_systemid` | string | systemId |  | Unique system identifier |
+| `u_systemname` | string | systemName |  | Human-readable system name |
+| `u_systemversion` | string | systemVersion |  | Siveillance system software version |
+| `u_kernelversion` | string | kernelVersion |  | System kernel version |
+| `u_equipmentnumber` | string | equipmentNumber |  | Physical equipment serial number |
+| `u_countrycode` | string | countryCode |  | ISO country code |
+| `u_systemstatus` | string | systemStatus |  | Current operational status (Connected, Disconnected, Unknown) |
+| `u_busamount` | integer | busAmount |  | Number of communication buses |
+| `u_controlpanelcount` | integer | controlPanelCount |  | Number of control panels |
+| `u_devicecount` | integer | deviceCount |  | Total connected devices |
+| `u_inputcount` | integer | inputCount |  | Total sensor inputs |
+| `u_outputcount` | integer | outputCount |  | Total control outputs |
+| `u_areacount` | integer | areaCount |  | Total protected areas |
+| `u_lastsystemstart` | glide_date_time | lastSystemStart |  | Timestamp of last system restart |
+| `u_licensedateutc` | glide_date_time | licenseDateUtc |  | System license expiration date |
+| `u_availablediskkb` | integer | availableDiskKb |  | Available disk storage in kilobytes |
+| `u_availableflashkb` | integer | availableFlashKb |  | Available flash memory in kilobytes |
+
+### Schema Notes
+
+- All tables are created within the application scope
+- Tables inherit standard ServiceNow base table functionality
+- ACL rules are automatically generated for scoped access
+- Dictionary entries are created for all custom fields
+
+## Configuration
+
+The application uses system properties for configuration. All properties are prefixed with the application scope.
+
+*This application uses default configuration. No system properties are required.*
+
+## File Manifest
+
+All files installed by this application:
+
+### Configuration Files
+
+| File Path | Purpose |
+|-----------|---------|
+| `sys_app.xml` | Application definition |
+| `install.js` | Deployment script |
+
+### Documentation
+
+| File Path | Purpose |
+|-----------|---------|
+| `README.md` | Installation guide |
+
+### Total Files
+
+This application installs **3** files across 2 categories.
+
+## Post-Installation Setup
+
+After installation, complete these steps:
+
+### 1. Run Guided Setup
+
+1. Navigate to the application menu
+2. Open **Guided Setup**
+3. Follow the wizard to configure all settings
+4. Click **Apply** to save configuration
+
+### 2. Verify Installation
+
+1. Check **System Logs > All** for any errors during installation
+2. Look for log entries tagged with `[Installer]`
+3. Verify all tables were created successfully
+4. Confirm system properties are set correctly
+
+### 3. Configure Access Control
+
+1. Navigate to **System Security > Access Control (ACL)**
+2. Review ACLs for scope: `x_ic_siveillance`
+3. Adjust permissions as needed for your organization
+4. Test access with non-admin users
+
+### 4. Test Connectivity
+
+1. Open the **Config Page** from the application menu
+2. Verify all configuration values are correct
+3. Run a test execution if available
+4. Check integration logs for successful connection
+
+## Testing & Validation
+
+### Manual Testing Checklist
+
+- [ ] All tables are created and accessible
+- [ ] System properties are set with correct values
+- [ ] Guided Setup wizard opens without errors
+- [ ] Config Page displays all settings
+- [ ] No errors in System Logs after installation
+- [ ] ACLs permit appropriate user access
+- [ ] Integration executes successfully
+- [ ] Data is written to correct tables
+
+### Automated Testing (MCP)
+
+If you have the ServiceNow MCP server configured, run automated tests:
+
+```bash
+# Verify table creation
+# List records in primary table: x_ic_siveillance_siveillance_intrusion_ci
+
+# Check system properties
+# Query sys_properties where name STARTSWITH x_ic_siveillance
+
+# Validate update set
+# Inspect current update set for completeness
+```
+
+## Troubleshooting
+
+### Installation Fails
+
+**Symptoms:** Application install errors or rollback
+
+**Solutions:**
+- Check System Logs for specific error messages
+- Verify all prerequisites are met
+- Ensure no conflicting applications are installed
+- Try importing as an update set instead
+
+### Tables Not Created
+
+**Symptoms:** Custom tables are missing after installation
+
+**Solutions:**
+- Check for errors in System Logs tagged `[Installer]`
+- Verify user has table_admin role
+- Manually run the schema installer if provided
+- Review XML configuration files for syntax errors
+
+### Configuration Not Applied
+
+**Symptoms:** System properties are missing or have wrong values
+
+**Solutions:**
+- Run Guided Setup wizard again
+- Manually create missing properties via System Properties UI
+- Check for scope prefix in property names
+- Verify postInstall.ts executed successfully
+
+### Integration Not Running
+
+**Symptoms:** No data being synchronized or processed
+
+**Solutions:**
+- Verify all configuration values are correct
+- Check external system connectivity
+- Review scheduled job status if using scheduling
+- Test webhook endpoints if using webhook mode
+- Check rate limits and timeout configurations
+
+## Support
+
+### Getting Help
+
+For support with this application:
+
+1. **Review Documentation:** Check this README thoroughly
+2. **Check System Logs:** Look for `[Installer]` tagged entries
+3. **ServiceNow Community:** Post questions with application scope in title
+4. **Contact:** Reach out to Siemens support team
+
+### Reporting Issues
+
+When reporting issues, include:
+
+- ServiceNow instance version
+- Application version (from this README)
+- Relevant System Log entries
+- Steps to reproduce the issue
+- Expected vs actual behavior
+
+---
+
+**Generated by InfinitiCode** | ServiceNow Integration Platform
