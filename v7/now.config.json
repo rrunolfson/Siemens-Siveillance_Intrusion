@@ -1,0 +1,14 @@
+{
+  "scope": "x_ic_siveillance",
+  "name": "Siveillance Intrusion Integration",
+  "metadataDir": "metadata",
+  "fluentDir": "src/fluent",
+  "generatedDir": "generated",
+  "serverModulesDir": "src/server",
+  "clientDir": "src/client",
+  "appOutputDir": "dist/app",
+  "staticContentDir": "dist/static",
+  "packOutputDir": "target",
+  "tableOutputFormat": "bootstrap",
+  "tsconfigPath": "tsconfig.json"
+}
