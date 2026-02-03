@@ -1,0 +1,17 @@
+{
+  "name": "siveillance_intrusion_integration",
+  "version": "1.0.0",
+  "description": "Integration for Siemens Siveillance Intrusion detection systems.\nEnables discovery and management of intrusion system devices, zones, and configurations\nthrough the Siveillance Intrusion API. Supports real-time monitoring and automated\nincident correlation with ServiceNow security incidents.\n",
+  "main": "install.js",
+  "scripts": {
+    "install": "node install.js",
+    "deploy": "node install.js"
+  },
+  "keywords": [
+    "servicenow",
+    "integration",
+    "Security"
+  ],
+  "author": "Siemens",
+  "license": "UNLICENSED"
+}
